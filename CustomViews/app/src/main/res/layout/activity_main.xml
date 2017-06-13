@@ -44,6 +44,7 @@
             android:textOn="@string/front_btn_text"/>
         <de.hochschule_trier.customviewmodule.MasterToggleButton
             android:id="@+id/rear_btn"
+            app:disableSlaves="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
