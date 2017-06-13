@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">customviewmodule</string>
+    <string name="number_0_btn">0</string>
+    <string name="number_1_btn">1</string>
+    <string name="number_2_btn">2</string>
+    <string name="number_3_btn">3</string>
+    <string name="number_4_btn">4</string>
+    <string name="number_5_btn">5</string>
+    <string name="number_6_btn">6</string>
+    <string name="number_7_btn">7</string>
+    <string name="number_8_btn">8</string>
+    <string name="number_9_btn">9</string>
+    <string name="comma_btn">,</string>
 </resources>

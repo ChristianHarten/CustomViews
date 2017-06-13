@@ -3,4 +3,5 @@
     <declare-styleable name="MasterToggleButton">
         <attr name="disableSlaves" format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="SimpleNumpad" />
 </resources>
