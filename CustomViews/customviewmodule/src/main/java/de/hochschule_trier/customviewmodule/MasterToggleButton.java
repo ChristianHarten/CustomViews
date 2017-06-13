@@ -28,9 +28,6 @@ public class MasterToggleButton extends ToggleButton{
         super(context);
     }
     public void addSlaves(ToggleButton slave) {
-        if (slave instanceof MasterToggleButton) {
-            ((MasterToggleButton) slave).setDisableSlaves(this.disableSlaves);
-        }
         slave.setClickable(!this.disableSlaves);
         this.slaves.add(slave);
     }

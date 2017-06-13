@@ -55,28 +55,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <de.hochschule_trier.customviewmodule.MasterToggleButton
+        <ToggleButton
             android:id="@+id/left_front_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textOff="@string/left_btn_text"
             android:textOn="@string/left_btn_text"/>
-        <de.hochschule_trier.customviewmodule.MasterToggleButton
+        <ToggleButton
             android:id="@+id/right_front_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textOff="@string/right_btn_text"
             android:textOn="@string/right_btn_text"/>
-        <de.hochschule_trier.customviewmodule.MasterToggleButton
+        <ToggleButton
             android:id="@+id/left_rear_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textOff="@string/left_btn_text"
             android:textOn="@string/left_btn_text"/>
-        <de.hochschule_trier.customviewmodule.MasterToggleButton
+        <ToggleButton
             android:id="@+id/right_rear_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
