@@ -10,43 +10,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MasterToggleButton extends ToggleButton{
-    private List<ToggleButton> slaves;
-    private boolean disableSlaves;
+    private List<ToggleButton> slaves = new ArrayList<>();
+    private boolean disableSlaves = false;
     public MasterToggleButton(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         parseAttributes(attrs);
-        init();
     }
     public MasterToggleButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         parseAttributes(attrs);
-        init();
     }
     public MasterToggleButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         parseAttributes(attrs);
-        init();
     }
     public MasterToggleButton(Context context) {
         super(context);
-        init();
     }
     public void addSlaves(ToggleButton slave) {
+        if (slave instanceof MasterToggleButton) {
+            ((MasterToggleButton) slave).setDisableSlaves(this.disableSlaves);
+        }
         slave.setClickable(!this.disableSlaves);
         this.slaves.add(slave);
     }
     public void addSlaves(ToggleButton[] newSlaves) {
         for (ToggleButton slave : newSlaves) {
-            slave.setClickable(!this.disableSlaves);
-            this.slaves.add(slave);
+            this.addSlaves(slave);
         }
-    }
-    private void init() {
-        this.slaves = new ArrayList<>();
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        super.onTouchEvent(event);
         if (!slaves.isEmpty()) {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 for (ToggleButton slave : slaves) {
@@ -54,7 +48,7 @@ public class MasterToggleButton extends ToggleButton{
                 }
             }
         }
-        return true;
+        return super.onTouchEvent(event);
     }
     public boolean hasSlaves() {
         return !this.slaves.isEmpty();
@@ -70,10 +64,11 @@ public class MasterToggleButton extends ToggleButton{
         refreshSlaveList();
     }
     private void refreshSlaveList() {
-        if (!this.slaves.isEmpty()) {
-            for (ToggleButton slave : slaves) {
-                slave.setClickable(!this.disableSlaves);
+        for (ToggleButton slave : slaves) {
+            if (slave instanceof MasterToggleButton) {
+                ((MasterToggleButton) slave).setDisableSlaves(this.disableSlaves);
             }
+            slave.setClickable(!this.disableSlaves);
         }
     }
     private void parseAttributes(AttributeSet attrs) {
@@ -81,12 +76,12 @@ public class MasterToggleButton extends ToggleButton{
         disableSlaves = a.getBoolean(R.styleable.MasterToggleButton_disableSlaves, disableSlaves);
         a.recycle();
     }
-    private void handleEvent(ToggleButton slave) {
-        if (slave instanceof MasterToggleButton && ((MasterToggleButton) slave).hasSlaves()) {
-            for (ToggleButton _slave : ((MasterToggleButton) slave).getSlaves()) {
-                handleEvent(_slave);
+    private void handleEvent(ToggleButton _slave) {
+        if (_slave instanceof MasterToggleButton && ((MasterToggleButton) _slave).hasSlaves()) {
+            for (ToggleButton slave : ((MasterToggleButton) _slave).getSlaves()) {
+                handleEvent(slave);
             }
         }
-        slave.setChecked(!this.isChecked());
+        _slave.setChecked(!this.isChecked());
     }
 }
