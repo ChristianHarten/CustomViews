@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CustomViews</string>
+    <string name="master_btn_text">All</string>
+    <string name="center_btn_text">Center</string>
+    <string name="suubwoofer_btn_text">Subwoofer</string>
+    <string name="front_btn_text">Front</string>
+    <string name="rear_btn_text">Rear</string>
+    <string name="left_btn_text">Left</string>
+    <string name="right_btn_text">Right</string>
 </resources>
