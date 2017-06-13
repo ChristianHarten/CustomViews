@@ -7,7 +7,6 @@ import android.widget.ToggleButton;
 import de.hochschule_trier.customviewmodule.MasterToggleButton;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
